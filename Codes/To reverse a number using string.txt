@@ -1,0 +1,14 @@
+public class Practice{
+    public static void main(String[] args){
+    int num = 1234;
+    String s = "";
+
+    while(num!=0){
+        int digit = num%10;
+        s = s + digit;
+        num = num/10;
+    }
+    System.out.println(s);
+    }
+}
+

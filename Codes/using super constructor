@@ -1,0 +1,39 @@
+public class Main {
+    public static void main(String[] args) {
+        Employee emp1 = new Employee("Harsha", 22, 8019919980L, "Kadapa", 20000, "Java");
+        emp1.printSalary();
+        Manager mng1 = new Manager("Charan", 30, 9052828905L, "Visakhapatnam", 40000, "Operations");
+        mng1.printSalary();
+    }
+}
+class Member {
+    String name;
+    int age;
+    long phonenumber;
+    String address;
+    int salary;
+    Member(String n, int a, long ph, String add, int sal) {
+        this.name = n;
+        this.age = a;
+        this.phonenumber = ph;
+        this.address = add;
+        this.salary = sal;
+    }
+    void printSalary() {
+        System.out.println(this.salary);
+    }
+}
+class Employee extends Member {
+    String specialization;
+    Employee(String n, int a, long ph, String add, int sal, String spec) {
+        super(n, a, ph, add, sal);
+        this.specialization = spec;
+    }
+}
+class Manager extends Member {
+    String department;
+    Manager(String n, int a, long ph, String add, int sal, String dep) {
+        super(n, a, ph, add, sal);
+        this.department = dep;
+    }
+}

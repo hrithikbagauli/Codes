@@ -1,0 +1,27 @@
+class Solution {
+    public int divide(int dividend, int divisor) {
+    if(dividend==Integer.MIN_VALUE && divisor==-1)
+        return Integer.MAX_VALUE;
+        
+    int sign = (dividend<0) ^ (divisor<0)? -1:1;
+    
+    long ldividend = (long) dividend;
+    long ldivisor = (long) divisor;
+    
+    ldividend = Math.abs(ldividend);
+    ldivisor = Math.abs(ldivisor);
+        
+    long quotient = 0;
+    for(long i=31; i>=0; i--){ //starting from 31 because we've used long and 2^31 is equal to 2147483648, which is out of range of int(this is also a reason why we've used long) and since the max value we can get is 2147483648, thats why we've done i=31.
+        if((ldivisor<<i)<=ldividend){
+            ldividend = ldividend - (ldivisor<<i);
+            quotient = quotient|(1l<<i); //here, we've done an OR operation of the quotient with 1l<<i because doing an OR operation with values that are in the form of 2^n is the same thing as adding them (Import to note here that OR works this way only for numbers in 2^n format and not others). Also 1l is simply 1 with long as its datatype, and we've used long here as well because i is also long and 1 with int as its datatype will not be able to store the value of i if its higher than 2147483647.
+        }
+    }
+    
+        if(sign==-1)
+            return (int)-quotient;
+        
+        return (int)quotient;
+    }
+}

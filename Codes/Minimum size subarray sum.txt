@@ -1,0 +1,21 @@
+class Solution {
+    //the logic behind this question is of sliding window. Basically, we keep adding the elements until their total sum is greater than or equal to the given target. As soon as that happens, we store the length inside res using Math.min() so that whenever the next value of res comes, it'll get compared with the existing value inside res and that way we would have compared all the subarrays. We use the formula j-i+1 because j-i gives us the length but since in arrays, we start from index 0, we have to add a 1 to this formula, so it becomes j-i+1. Now, after storing the min length so far, we increment the value of i to contract the window and subtract it from the total sum. We're doing this because we've already got one subarray whose sum is >= target, but we want the shortest subarray possible, so we contract the window by incrementing i and removing its value from the total sum. 
+    public int minSubArrayLen(int target, int[] arr) {
+        int sum = 0;
+        int res = Integer.MAX_VALUE;
+        int j = 0;
+        int i = 0;
+        
+        while(j<arr.length){
+            sum = sum + arr[j];
+            while(sum>=target){
+                res = Math.min(res, j-i+1);
+                sum = sum - arr[i];
+                i++;
+            }
+            j++;
+        }
+        
+        return res!=Integer.MAX_VALUE? res: 0;   //if res is not equal to Integer.MAX_VALUE anymore, it means its value was changed which means that we found atleast one subarray(there might be more than one). So, if res is still equal to Integer. MAX_VALUE it means its value never got changed and we never found a subarray, so we just return 0.
+    }
+}

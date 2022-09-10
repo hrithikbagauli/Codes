@@ -1,0 +1,19 @@
+class Practice{
+    public static void main(String[] args) {
+        String a = "123ab67";
+        String b = "";
+        int count = 0;
+
+        for(int i: a.toCharArray()){
+            if(Character.isDigit(i)){
+                b = b + Character.toString(i);
+            }
+        }
+
+        System.out.println(b);
+
+        
+    }
+}
+
+

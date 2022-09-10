@@ -1,0 +1,24 @@
+public class Triangle {
+    int side1, side2, side3;
+    
+    Triangle(int s1, int s2, int s3){
+        side1 = s1;
+        side2 = s2;
+        side3 = s3;
+    }
+
+    public void calculate_area(){
+        int s = (side1+side2+side3)/2;
+        System.out.println("The area is: "+Math.sqrt(s*(s-side1)*(s-side2)*(s-side3)));
+    }
+
+    public void calculate_perimeter(){
+        System.out.println("The perimeter is: "+(side1+side2+side3));
+    }
+
+    public static void main(String[] args) {
+        Triangle obj = new Triangle(3,4,5);
+        obj.calculate_perimeter();
+        obj.calculate_area();
+    }
+}

@@ -1,0 +1,24 @@
+class Practice{
+    public static void main(String[] args) {
+        String name = "abcdefgh";
+        char arr[] = name.toCharArray();
+        String s = "";
+
+        for(int i=0; i<arr.length-1; i++){
+            for(int j=0; j<arr.length-i-1; j++){
+                char temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+
+        for(char i:arr){
+            s = s + i;
+        }
+        
+        System.out.println(s);
+
+    }
+
+
+}

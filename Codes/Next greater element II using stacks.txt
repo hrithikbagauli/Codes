@@ -1,0 +1,20 @@
+class Solution {
+    public int[] nextGreaterElements(int[] nums) {
+        Stack<Integer> stack = new Stack<>();
+        
+        for(int i=nums.length-1; i>=0; i--){
+            stack.push(nums[i]); //pushing the elements into the empty stack because the last element will start searching from the first index again, so creating that imaginary extension of the array in which the elements will start from index 0, as soon as we reach the end of the real length of the array.
+        }
+        
+        for(int i=nums.length-1; i>=0; i--){
+            while(!stack.isEmpty() && nums[i]>=stack.peek()) //popping the stack elements until we get a 
+                stack.pop();
+            
+            int temp = nums[i]; //temporarily storing the real value of nums[i] to use later because we'll replace the real value with a new value, but we'll still need the old value once.
+            nums[i] = stack.isEmpty()? -1: stack.peek(); //
+            stack.push(temp); //pushing the current element back into the stack because the next element i.e. nums[i] will be compared with nums[i+1], so if we dont write this statement, it'll just compare nums[i] to whatever element is left in the stack and give an incorrect output.
+        }
+        
+        return nums;
+    }
+}

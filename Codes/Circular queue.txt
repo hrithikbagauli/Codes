@@ -1,0 +1,63 @@
+
+class Practice{
+    static int arr[] = new int[5];
+    static int size = arr.length;
+    static int rear = -1;
+    static int front = -1;
+
+    public static boolean isEmpty(){
+        return rear == -1;
+    }
+
+    public static boolean isFull(){
+        return (rear+1)%size == front;
+    }
+
+    public static void add(int data){
+        if(isFull()){
+            System.out.println("full queue");
+            return;
+        }
+        if(front==-1)
+            front = 0;
+
+        rear = (rear+1)%size; 
+        arr[rear] = data;
+    }
+
+    public static int remove(){
+        if(isEmpty()){
+            System.out.println("empty queue");
+            return -1;
+        }
+        
+        int temp = arr[front];
+
+        if(rear==front)     //if there's only one element left in the queue.
+            rear=front=-1;
+        else
+            front = (front+1)%size;
+        
+        return temp;
+    }
+
+    public static int peek(){
+        if(isEmpty()){
+            System.out.println("empty queue");
+            return -1;
+        }
+
+        return arr[front];
+    }
+
+    public static void main(String[] args) {
+        add(1);
+        add(2);
+        add(3);
+        add(5);
+        
+        remove();
+    
+        System.out.println(peek());
+    }
+}

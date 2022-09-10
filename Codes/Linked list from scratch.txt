@@ -1,0 +1,92 @@
+class LL{
+    Node head;
+    int size = 0;
+    class Node{
+        String data;
+        Node next;
+    
+        Node(String data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+    public void addFirst(String data){
+        size++;
+        Node newnode = new Node(data);
+        if(head==null){
+            head = newnode;
+            return;
+        }
+        newnode.next = head;
+        head = newnode;
+    }
+
+    public void addLast(String data){
+        size++;
+        Node newnode = new Node(data);
+        if(head==null){
+            head = newnode;
+            return;
+        }
+        Node currnode = head;
+        while(currnode.next != null){
+            currnode = currnode.next;
+        }
+        currnode.next = newnode;
+    }
+
+    public void printList(){
+        if(head==null){
+            System.out.println("empty list");
+            return;
+        }
+        Node currnode = head;
+        while(currnode!=null){
+            System.out.print(currnode.data+"--->");
+            currnode = currnode.next;
+        }
+        System.out.println("NULL");
+    }
+
+    public void deleteFirst(){
+        if(head==null){
+            System.out.println("empty list");
+            return;
+        }
+        head = head.next;
+        size--;
+    }
+
+    public void deleteLast(){
+        if(head == null){
+            System.out.println("empty list");
+            return;
+        }
+        size--;
+        if(head.next == null){ //if there's only one node.
+            head = null;
+            return;
+        }
+
+        Node last = head.next;
+        Node secondlast = head;
+
+        while(last.next != null){
+            last = last.next;
+            secondlast = secondlast.next;
+        }
+        secondlast.next = null;
+    }
+
+    public static void main(String[] args) {
+        LL list = new LL();
+        list.addFirst("this");
+        list.addFirst("is");
+        list.addFirst("a");
+        list.addLast("class");
+        list.addLast("hello");
+        list.printList();
+        list.deleteFirst();
+        System.out.println(list.size);
+    }
+}

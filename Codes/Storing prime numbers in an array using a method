@@ -1,0 +1,30 @@
+
+
+public class Practice{
+    public static boolean isPrime(int n){
+        for(int i=2; i<=n/2; i++){
+            if(n%i==0){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args){
+    int counter = 0;
+    int arr[] = new int[10];
+
+    for(int i=2; counter<10; i++){
+        if(isPrime(i)){
+            arr[counter] = i;
+            counter++;
+        }
+    }
+
+    for(int i:arr){
+        System.out.println(i);
+    }
+    }
+}
+
+
+

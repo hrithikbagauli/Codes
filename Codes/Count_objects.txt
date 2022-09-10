@@ -1,0 +1,15 @@
+class Count_objects {
+    static int count=0;
+    
+    Count_objects(){
+        count++;
+    }
+
+    public static void main(String[] args) {
+        Count_objects obj = new Count_objects();
+        Count_objects obj1 = new Count_objects();
+        Count_objects obj2 = new Count_objects();
+        System.out.println(count);
+    }
+}
+

@@ -1,0 +1,16 @@
+public class MyClass {
+    public static void main(String args[]) {
+      String hexa_val = "0123456789ABCDEF";
+      char hexarr[] = hexa_val.toCharArray();
+      int num = -1;
+      String finalval = "";
+      while(num!=0){
+          int rem = (num&15);   // &15 gets the last four bits i.e. the bits that make up the remainder. so basically &15 does the same thing as num%16. Also, the reason we use 15 is because 15 is 1111 in binary and we know that num&1 will get the last bit, similarly 1111 will get the last four bits.
+          finalval = hexarr[rem] + finalval;
+          num = num>>>4;    //>>> is called an unsigned right shift, it does the same thing as >> but >> works differently depending on whether its -ve or +ve. Here, we use >>>4 because we want to remove the last four bits of the number. This does the same thing as num/16.
+      }
+      
+      System.out.println(finalval);
+      
+    }
+}

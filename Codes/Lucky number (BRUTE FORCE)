@@ -1,0 +1,31 @@
+import java.util.HashSet;
+class Solution {
+    public int findLucky(int[] arr) {
+        HashSet<Integer> h = new HashSet<>();
+        int a[] = new int[arr.length];
+        int count = 0;
+        int max = -1;
+        
+        for(int i=0; i<arr.length; i++){
+            for(int j=0; j<arr.length; j++){
+                if(arr[i]==arr[j]){
+                    count++;
+                }
+            }
+            if(count==arr[i]){
+                h.add(arr[i]);
+            }
+            count = 0;
+        }
+        
+        for(int i:h){
+            if(max<i){
+                max = i;
+            }
+        }
+        return max;
+        
+        
+    
+    }
+}

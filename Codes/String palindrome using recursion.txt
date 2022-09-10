@@ -1,0 +1,23 @@
+class Practice{
+  public static void print(char[] arr, int i, int j){
+    if(arr[i]!=arr[j]){
+      System.out.println(false);
+      return;
+    }
+    else if(i>=j){
+      System.out.println(true);
+      return;
+    }
+
+    else{
+      print(arr, i+1, j-1);
+    }
+
+  }
+  public static void main(String[] args) {
+    String name = "aba";
+    char arr[] = name.toCharArray();
+
+    print(arr, 0, arr.length-1);
+  }
+}

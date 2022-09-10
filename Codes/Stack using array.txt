@@ -1,0 +1,75 @@
+class Practice{
+    public static void main(String[] args) {
+        Stack s = new Stack();
+        s.push(1);
+        s.push(2);
+        s.push(3);
+        s.push(4);
+        s.push(5);
+        s.push(4);
+        
+        System.out.println("the top element is: "+ s.peek());
+        System.out.println("the popped element is: "+ s.pop());
+        System.out.println("now the top element is: "+ s.peek());
+        System.out.println("is the stack empty? " + s.isEmpty());
+        System.out.println("size of the stack is: "+ s.size());
+
+    }
+}
+
+
+class Stack{
+    int arr[] = new int[5];
+    int top = 0;
+    public void push(int data){
+        if(top==arr.length)
+            System.out.println("stack is full");
+            
+        else{
+            arr[top] = data;
+            top++;
+        }
+    
+    }
+
+    public void show(){
+        for(int i:arr){
+            System.out.println(i);
+        }
+    }
+
+    public int pop(){
+        if(isEmpty())
+            return -1;
+
+        top = top-1;
+        int temp = arr[top];
+        arr[top] = 0;
+        
+        return temp;
+    }
+
+    public int peek(){
+        if(isEmpty())
+            return -1;
+        return arr[top-1];
+    }
+
+    public boolean isEmpty(){
+        if(top<=0)
+            return true;
+        return false;
+    }
+
+    public int size(){
+        if(isEmpty())
+            return 0;
+
+        int count = 0;
+        for(int i=top-1; i>=0; i--){
+            count++;
+        }
+        return count;
+    }
+
+}

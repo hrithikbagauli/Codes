@@ -1,0 +1,50 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode sortnode = new ListNode(0);   //new ListNode(0) is just a way of creating a temp node, its like creating a variable that has not been initialized so that it can be used later to store some value.
+        ListNode headnode = null;
+        
+        if(list1==null){
+            return list2;
+        }
+        if(list2==null)
+            return list1;
+        
+        while(list1 != null && list2 != null){
+            if(list1.val <= list2.val){
+                sortnode.next = list1;
+                list1 = list1.next;
+            }
+            
+            else{
+                sortnode.next = list2;
+                list2 = list2.next;
+            }
+            
+            if(headnode == null){
+                headnode = sortnode.next;
+            }
+            
+            sortnode = sortnode.next;
+        }
+        
+        //The conditions below are for when one of the two nodes becomes null before the other and the while loop stops so the rest of the linked list will remain unlinked. So, we're just linking the remaining the part of the linked list in the steps below.
+        if(list1==null){
+            sortnode.next = list2;
+        }
+        else{
+            sortnode.next = list1;
+        }
+        
+        return headnode;
+    }
+}

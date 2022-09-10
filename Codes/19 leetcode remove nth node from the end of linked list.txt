@@ -1,0 +1,42 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        int len = 0;
+        ListNode currnode = head;
+        //edge cases if there's no element or if there's only one element in the linked list.
+        if(head==null || head.next==null)
+            return null;
+        
+        //to find the length of the linked list.
+        while(currnode!=null){
+            currnode = currnode.next;
+            len++;
+        }
+        
+        //if the length of Linked list is equal to n, it means the question wants us to delete the head node.
+        if(len==n){
+            head = head.next;
+            return head;
+        }
+        
+        int count = 1;  //count starts from 1 and not 0 because currnode is already at the first node i.e. head, when we start iterating through the linked list.
+        currnode = head;
+        
+        while(count<len-n){ //count<len-n because len-n is the position of the element we want to delete, but to do that we need the node before that so we write <.
+            currnode = currnode.next;
+            count++;
+        }
+        
+        currnode.next = currnode.next.next;   
+        return head;
+    }
+}

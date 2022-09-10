@@ -1,0 +1,44 @@
+class Solution {
+//the basic concept behind this solution is that the water that will be accumulated simply depends on the tallest bar to the left and the tallest bar on the right. the water will get collected between these two. Now, the amount of water that will be stored depends on the height of the smallest bar between the two bars we talked about minus the height of the bar between the two.
+    public int trap(int[] arr) {
+        int leftGreatest[] = new int[arr.length]; //creating an array that will store the max element on the left side of the current element i.e. arr[i]
+        int rightGreatest[] = new int[arr.length]; //creating an array that will store the max element on the right side of the current element i.e. arr[i]
+        Stack<Integer> stack = new Stack<>();
+        
+        //storing the max value to the left for each element.
+        for(int i=0; i<arr.length; i++){
+            if(!stack.isEmpty() && arr[i]>=stack.peek()){
+                stack.pop();
+                stack.push(arr[i]);
+            }
+            int val = stack.isEmpty()? arr[i]: stack.peek();
+            leftGreatest[i] = val; 
+            if(stack.isEmpty()){
+                stack.push(val);
+            }
+        }
+        //resetting the value of stack so that we can repeat the same process for the rightGreatest array.
+        while(!stack.isEmpty())
+            stack.pop();
+        
+        //storing the max value to the right for each element.
+        for(int i=arr.length-1; i>=0; i--){
+            if(!stack.isEmpty() && arr[i]>=stack.peek()){
+                stack.pop();
+                stack.push(arr[i]);
+            }
+            int val = stack.isEmpty()? arr[i]: stack.peek();
+            rightGreatest[i] = val; 
+            if(stack.isEmpty()){
+                stack.push(val);
+            }
+        }
+        
+        int sum = 0;
+        for(int i=0; i<arr.length-1; i++){
+            sum = sum + Math.min(leftGreatest[i], rightGreatest[i])-arr[i];
+        }
+        
+        return sum;
+    }
+}

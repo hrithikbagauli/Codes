@@ -1,0 +1,45 @@
+
+class Employee{
+    String name;
+    double salary;
+
+    Employee(String name, double salary){
+        this.name = name;
+        this.salary = salary;
+    }
+
+}
+
+
+public class Main{
+    public static void main(String[] args) {
+        Employee obj1 = new Employee("Ross", 20000);
+        Employee obj2 = new Employee("Chandler", 30000);
+        Employee obj3 = new Employee("Joey", 50000);
+        Employee obj4 = new Employee("Phoebe", 10000);
+        Employee obj5 = new Employee("Rachel", 25000);
+
+        Employee arr[] = {obj1, obj2, obj3, obj4, obj5};
+        Employee temp;
+
+        for(int i=0; i<arr.length-1; i++){
+            for(int j=0; j<arr.length-i-1; j++){
+                if(arr[j].salary<arr[j+1].salary){
+                    temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+
+        for(Employee e:arr){
+            System.out.println(e.name +"\t"+ e.salary);
+        }
+        
+
+
+    }
+}
+
+
+

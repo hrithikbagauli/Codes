@@ -1,0 +1,24 @@
+
+class Main{
+    public static void main(String[] args) {
+       String s = "abc12fg524f";
+
+       for(int i=0; i<s.length(); i++){
+        
+        if(Character.isDigit(s.charAt(i))){
+            int j = i;
+            while(Character.isDigit(s.charAt(j)) && j<s.length()){
+                j++;
+            }
+            
+            System.out.println(s.substring(i, j));
+            i=j;
+        }
+       }
+
+       
+
+       
+       
+    }
+}

@@ -1,0 +1,23 @@
+class Practice{
+    public static void main(String[] args) {
+       Child obj = new Child();
+    }
+}
+
+class Parent{
+    String name;
+
+    Parent(String name){
+        this.name = name;
+        System.out.println(name);
+    }
+
+    
+}
+
+class Child extends Parent{
+    int x = 100;
+    Child(){
+        super("hrithik");
+    }
+}

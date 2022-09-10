@@ -1,0 +1,48 @@
+class Solution {
+    public int[] sortByBits(int[] arr) {
+        int new_arr[] = new int[arr.length];
+      
+      for(int i=0; i<arr.length-1; i++){
+        for(int j=0; j<arr.length-i-1; j++){
+            if(arr[j]>arr[j+1]){
+            int temp = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = temp;
+            }
+        }
+    }
+      int count = 0;
+      for(int i=0; i<arr.length; i++){
+          int temp = arr[i];
+          while(temp!=0){
+              if((temp&1)==1){
+                  count++;
+              }
+              temp= temp>>1;
+          }
+        new_arr[i] = count;
+        count=0;
+      }
+      
+    
+      
+    for(int i=0; i<arr.length-1; i++){
+        for(int j=0; j<arr.length-i-1; j++){
+            if(new_arr[j]>new_arr[j+1]){
+                int temp = new_arr[j];
+                new_arr[j] = new_arr[j+1];
+                new_arr[j+1] = temp;
+                
+                int temp1 = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp1;
+            }
+        }
+    }
+    
+      
+    return arr;
+    
+    }
+}
+    

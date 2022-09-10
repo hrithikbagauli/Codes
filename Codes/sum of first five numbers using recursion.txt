@@ -1,0 +1,34 @@
+Approach 1:-
+//Using a static variable called sum, because a new variable is created everytime in the memory using recursion. To avoid that, we use a static variable.
+class Practice{
+  static int sum = 0;
+  public static int print(int i){
+    if(i>5){
+      return 0;
+    }
+
+    sum = sum + i;
+    print(i+1);
+    return sum;
+  }
+  public static void main(String[] args) {
+    System.out.println(print(1));
+  }
+}
+
+Approach 2:-
+
+class Practice{
+  public static int print(int i){
+    int sum = 0;
+    if(i>5){
+      return 0;
+    }
+
+    sum = i + print(i+1);
+    return sum;
+  }
+  public static void main(String[] args) {
+    System.out.println(print(1));
+  }
+}
